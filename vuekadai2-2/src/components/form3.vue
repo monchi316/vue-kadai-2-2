@@ -5,7 +5,7 @@
         </div>       
         <div class="field">
             <div class="field">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea v-model="text" name="" id="" cols="30" rows="10" @change="consultInput"></textarea>
             </div>
             <div class="field is-grouped">
                 <div class="control">
@@ -24,6 +24,12 @@ export default {
     methods: {
         buttonClick1() {
             this.$emit("form-click", "Form2");
+        },
+        buttonClick2() {
+            this.$emit("form-click", "Form4");
+        },
+        consultInput() {
+            this.$store.state.consult = this.text
         }
     }
 }

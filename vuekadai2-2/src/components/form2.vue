@@ -6,27 +6,27 @@
         <div class="field">
             <div class="field">
                 <label class="label">現在、生命保険に加入されていますか</label>
-            <input type="radio" id="join" name="join" @click= "show1 = !show1">
-            <label class="radio" for="join">はい</label>
-            <input type="radio" id="join" name="join" @click= "show1 = !show1">
-            <label class="radio" for="join">いいえ</label>
+            <input v-model="radio" value="はい" type="radio" id="hoken" name="hoken" @click= "nowShow = !nowShow" @change="lifeInsuranceClick">
+            <label class="radio" for="hoken">はい</label>
+            <input v-model="radio" value="いいえ" type="radio" id="hoken" name="hoken" @click= "nowShow = !nowShow" @change="lifeInsuranceClick">
+            <label class="radio" for="hoken">いいえ</label>
             </div>
             <transition name="fade">
-                <div class="field" v-if="!show1">
+                <div class="field" v-if="!nowShow">
                 <label class="label">現在入院中ですか、または、最近３ヶ月以内に医師の診察・検査の結果、入院・手術を勧められたことはありますか？</label>
-                <input type="radio" id="now" name="now" @click= "show2 = !show2">
-                <label class="radio" for="now">はい</label>
-                <input type="radio" id="now" name="now" @click= "show2 = !show2">
-                <label class="radio" for="now">いいえ</label>
+                <input v-model="radio" value="はい" type="radio" id="jikkin" name="jikkin" @click= "pastShow = !pastShow" @change="nowClick">
+                <label class="radio" for="jikkin">はい</label>
+                <input v-model="radio" value="いいえ" type="radio" id="jikkin" name="jikkin" @click= "pastShow = !pastShow" @change="nowClick">
+                <label class="radio" for="jikkin">いいえ</label>
                 </div>
             </transition>          
             <transition name="fade">
-                <div class="field" v-if="!show2">
+                <div class="field" v-if="!pastShow">
                 <label class="label">過去５年以内に、病気や怪我で、手術を受けたことまたは継続して７日以上の入院をしたことがありますか？</label>
-                <input type="radio" id="past" name="past">
-                <label class="radio" for="past">はい</label>
-                <input type="radio" id="past" name="past">
-                <label class="radio" for="past">いいえ</label>
+                <input v-model="radio" value="はい" type="radio" id="kako" name="kako" @change="pastClick">
+                <label class="radio" for="kako">はい</label>
+                <input v-model="radio" value="いいえ" type="radio" id="kako" name="kako" @change="pastClick">
+                <label class="radio" for="kako">いいえ</label>
                 </div>
             </transition>            
             <div class="field is-grouped">
@@ -45,8 +45,8 @@
 export default {
     data(){
         return {
-            show1: true,
-            show2: true
+            nowShow: true,
+            pastShow: true
         }
     },
     methods: {
@@ -55,6 +55,15 @@ export default {
         },
         buttonClick2() {
             this.$emit("form-click", "Form3");
+        },
+        lifeInsuranceClick() {
+            this.$store.state.lifeInsurance = this.radio
+        },
+        nowClick() {
+            this.$store.state.now = this.radio
+        },
+        pastClick() {
+            this.$store.state.past = this.radio
         }
     }
 }
