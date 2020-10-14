@@ -9,10 +9,10 @@
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-left is-small is-primary" @click="buttonClick1">＜ 前へ戻る</button>
+                    <button class="button is-left is-small is-primary" @click="backButton">＜ 前へ戻る</button>
                 </div>
                 <div class="control">
-                    <button class="button is-right is-small is-primary" @click="buttonClick2">次へ進む ＞</button>
+                    <button class="button is-right is-small is-primary" @click="nextButton">次へ進む ＞</button>
                 </div>
             </div> 
         </div>      
@@ -22,14 +22,14 @@
 <script>
 export default {
     methods: {
-        buttonClick1() {
-            this.$emit("form-click", "Form2");
+        backButton() {
+            this.$emit("form-click", "lifeInsuranceForm");
         },
-        buttonClick2() {
-            this.$emit("form-click", "Form4");
+        nextButton() {
+            this.$emit("form-click", "comfirmForm");
         },
         consultInput() {
-            this.$store.state.consult = this.text
+            this.$store.commit('consult', this.text)
         }
     }
 }

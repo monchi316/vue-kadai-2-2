@@ -31,10 +31,10 @@
             </transition>            
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-left is-small is-primary" @click="buttonClick1">＜ 前へ戻る</button>
+                    <button class="button is-left is-small is-primary" @click="backButton">＜ 前へ戻る</button>
                 </div>
                 <div class="control">
-                    <button class="button is-right is-small is-primary" @click="buttonClick2">次へ進む ＞</button>
+                    <button class="button is-right is-small is-primary" @click="nextButton">次へ進む ＞</button>
                 </div>
             </div> 
         </div>      
@@ -50,20 +50,20 @@ export default {
         }
     },
     methods: {
-        buttonClick1() {
-            this.$emit("form-click", "Form1");
+        backButton() {
+            this.$emit("form-click", "userDateForm");
         },
-        buttonClick2() {
-            this.$emit("form-click", "Form3");
+        nextButton() {
+            this.$emit("form-click", "consultForm");
         },
         lifeInsuranceClick() {
-            this.$store.state.lifeInsurance = this.radio
+            this.$store.commit('lifeInsurance', this.radio)
         },
         nowClick() {
-            this.$store.state.now = this.radio
+            this.$store.commit('now', this.radio)
         },
         pastClick() {
-            this.$store.state.past = this.radio
+            this.$store.commit('past', this.radio)
         }
     }
 }

@@ -15,7 +15,7 @@
             <input v-model="date" type="date" @change="dateClick">
         </div>                                              
         <div class="control">
-            <button class="button is-small is-primary" @click="buttonClick">次へ進む ＞</button>
+            <button class="button is-small is-primary" @click="nextButton">次へ進む ＞</button>
         </div>
     </div>    
 </template>
@@ -23,14 +23,14 @@
 <script>
 export default {
     methods: {
-        buttonClick() {
-            this.$emit("form-click", "Form2");
+        nextButton() {
+            this.$emit("form-click", "lifeInsuranceForm");
         },
         radioClick() {
-            this.$store.state.gender = this.radio
+            this.$store.commit('gender', this.radio)
         },
         dateClick() {
-            this.$store.state.birthDate = this.date
+            this.$store.commit('birthDate', this.date)
         }
     }
 }

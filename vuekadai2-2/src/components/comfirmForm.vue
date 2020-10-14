@@ -26,7 +26,7 @@
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-left is-small is-primary" @click="buttonClick1">＜ 前へ戻る</button>
+                <button class="button is-left is-small is-primary" @click="backButton">＜ 前へ戻る</button>
             </div>
             <div class="control">
                 <button class="button is-right is-small is-primary">送信 ＞</button>
@@ -58,8 +58,8 @@ export default {
         }
     },
     methods: {
-        buttonClick1() {
-            this.$emit("form-click", "Form3");
+        backButton() {
+            this.$emit("form-click", "consultForm");
         },
         consultInput() {
             this.$store.state.consult = this.text

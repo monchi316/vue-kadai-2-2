@@ -7,21 +7,21 @@
 </template>
 
 <script>
-import Form1 from './components/form1.vue';
-import Form2 from './components/form2.vue';
-import Form3 from './components/form3.vue';
-import Form4 from './components/form4.vue';
+import userDateForm from './components/userDateForm.vue';
+import lifeInsuranceForm from './components/lifeInsuranceForm.vue';
+import consultForm from './components/consultForm.vue';
+import comfirmForm from './components/comfirmForm.vue';
 
 export default {
   components: {
-    Form1,
-    Form2,
-    Form3,
-    Form4
+    userDateForm,
+    lifeInsuranceForm,
+    consultForm,
+    comfirmForm
   },
   data () {
     return {
-      selectedComponent: 'Form1',
+      selectedComponent: 'userDateForm',
     }
   }
   
